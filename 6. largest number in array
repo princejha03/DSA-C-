@@ -32,33 +32,30 @@ int main(){
     cout << "\nlargest number: " << arr[n-1];
     return 0;
 }
-
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 2n method:
 #include<iostream>
 using namespace std;
-int main() {
+int largest(int arr[],int n){
+    int large=arr[0];
+    for(int i=0;i<n;i++){
+        if(large <arr[i]){
+            large =arr[i] ;
+        }
+    }
+    return large;
+}
+int main(){
     int n;
-    cout << "Enter the number of elements: ";
+    cout << "Enter the number:";
     cin >> n;
-    
-    int arr[n]; 
-    cout << "Enter " << n << " elements in array:\n";
-    for(int i = 0; i < n; i++) {
+    cout << "Enter the " << n << " Elements: \n";
+    int arr[n];
+    for(int i=0;i<n;i++){
         cin >> arr[i];
     }
     
-    cout << "\nthe array is:\n";
-    for(int i = 0; i < n; i++) {
-        cout << arr[i] << " ";
-    }
-    int largest = arr[0];
-    for(int i=0;i<n;i++){
-        if( arr[i]>largest){
-            largest = arr[i];
-        }
-    }
-    cout << "\nthe largest number is: " << largest;
-    
+    cout << "The largest number:" << largest(arr,n);
     return 0;
 }
