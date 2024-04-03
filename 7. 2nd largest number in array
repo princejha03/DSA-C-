@@ -37,48 +37,35 @@ int main(){
 2nd method.
 
 #include<iostream>
-#include<climits> // for INT_MIN
 using namespace std;
-
-int second_max(int arr[], int n) {
-    if (n < 2) {
-        cout << "The array should contain at least 2 elements." << endl;
-        return INT_MIN;
-    }
-    int firstmax = INT_MIN;
-    int secondmax = INT_MIN;
-    for (int i = 0; i < n; i++) {
-        if (arr[i] > firstmax) {
-            secondmax = firstmax;
-            firstmax = arr[i];
-        } else if (arr[i] > secondmax && arr[i] != firstmax) {
-            secondmax = arr[i];
+int secondlargest(int arr[],int n){
+    int largest=arr[0];
+    int ndlargest = -1;
+    for(int i=1;i<n;i++){
+        if(arr[i]> largest){
+            ndlargest = largest;
+            largest=arr[i];
         }
-    }
-    if (secondmax == INT_MIN) {
-        cout << "All elements in the array are the same." << endl;
-    }
-    return secondmax;
+        else if(arr[i]>ndlargest && arr[i] != largest){
+            ndlargest = arr[i];
+        }
+        if (ndlargest == -1) {
+        cout << "No second largest element found.";
+        return -1;
+        }
 }
-
-int main() {
-    int n;
-    cout << "Enter the number of elements: ";
+return ndlargest;
+    
+}
+int main(){
+    int n,i;
+    cout<<"enter the number:";
     cin >> n;
-    if (n <= 0) {
-        cout << "Invalid array size." << endl;
-        return 1;
-    }
     int arr[n];
-    cout << "Enter " << n << " number of elements: \n";
-    for (int i = 0; i < n; i++) {
+    cout<<"Enter the " << n << " elements:\n";
+    for(i=0;i<n;i++){
         cin >> arr[i];
     }
-    cout << "\nArray:\n";
-    for (int i = 0; i < n; i++) {
-        cout << arr[i] << " ";
-    }
-    cout << "\nSecond largest: " << second_max(arr, n) << endl;
+    cout << "The second largets number: " << secondlargest(arr,n);
     return 0;
 }
-
