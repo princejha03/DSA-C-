@@ -69,3 +69,43 @@ int main(){
     cout << "The second largets number: " << secondlargest(arr,n);
     return 0;
 }
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2nd smallest number:
+
+#include<iostream>
+using namespace std;
+int secondsmallest(int arr[],int n){
+    int smallest=arr[0];
+    int ndsmallest = 1;
+    for(int i=1;i<n;i++){
+        if(arr[i]<smallest){
+            ndsmallest = smallest;
+            smallest=arr[i];
+        }
+        else if(arr[i] < ndsmallest && arr[i] != smallest){
+            ndsmallest = arr[i];
+        }
+        if (ndsmallest == 1) {
+        cout << "No second smallest element found.";
+        return -1;
+        }
+}
+return ndsmallest;
+    
+}
+int main(){
+    int n,i;
+    cout<<"enter the number:";
+    cin >> n;
+    int arr[n];
+    cout<<"Enter the " << n << " elements:\n";
+    for(i=0;i<n;i++){
+        cin >> arr[i];
+    }
+    cout << "The array is:\n";
+    for(i=0;i<n;i++){
+        cout << arr[i]<< " ";
+    }
+    cout << "\nThe second smallest number: " << secondsmallest(arr,n);
+    return 0;
+}
