@@ -19,3 +19,48 @@ public:
         return ans;
     }
 };
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#include<iostream>
+#include<vector>
+using namespace std;
+
+vector<int> alternateNumbers(vector<int>& a) {
+    vector<int> pos;
+    vector<int> neg;
+    int n = a.size(); // Fix: Get the size of the input vector 'a'
+    
+    for(int i = 0; i < n; i++) {
+        if(a[i] > 0) 
+            pos.push_back(a[i]);
+        else 
+            neg.push_back(a[i]);
+    }
+
+    vector<int> result(n); // Create a new vector to hold the result
+
+    if(pos.size() < neg.size()) {
+        for(int i = 0; i < pos.size(); i++) {
+            result[2 * i] = pos[i];
+            result[2 * i + 1] = neg[i];
+        }
+        int index = pos.size() * 2;
+        for(int i = pos.size(); i < neg.size(); i++) {
+            result[index] = neg[i];
+            index++;
+        }
+    } else {
+        for(int i = 0; i < neg.size(); i++) {
+            result[2 * i] = pos[i];
+            result[2 * i + 1] = neg[i];
+        }
+        int index = neg.size() * 2;
+        for(int i = neg.size(); i < pos.size(); i++) {
+            result[index] = pos[i];
+            index++;
+        }
+    }
+    return result; // Return the result vector
+}
+
