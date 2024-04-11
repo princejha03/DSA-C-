@@ -1,0 +1,15 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+vector<int> nextGreaterPermutation(vector<int> &A) {
+    bool found = next_permutation(A.begin(), A.end());
+    
+    if (!found) {
+        sort(A.begin(), A.end());
+    }
+    
+    return A;
+}
